@@ -5,10 +5,17 @@ import Sidenav from './Sidenav'
 
 function Register() {
 
-  // const [formValues, setFormValues] = useState({})
   const formRef =useRef({})
   function setInput(e, index) {
-    formRef.current[e.target.id]=e.target.value;
+    if(index !=null){
+      formRef.current[index]=e.target.value;
+
+    }
+    else{
+
+      formRef.current[e.target.id]=e.target.value;
+    }
+    
     console.log(formRef.current)
    
   }
@@ -25,32 +32,31 @@ function Register() {
 
         <Stack spacing={2} justifyContent="center">
           <Stack direction="row" spacing={2}>
-            {/* <InputLabel htmlFor="company_name">Company</InputLabel> */}
-            {/* <OutlinedInput variant="outlined" multiline rows={4} TextField fullWidth name='company_name'></ OutlinedInput> */}
+          
 
-            <TextField required id='Business Description ' label="Business Description " variant='outlined' multiline rows={4} fullWidth />
-            <TextField id='Corporate Philosophy' label="Corporate Philosophy" variant='outlined' multiline rows={4} fullWidth />
+            <TextField required id='Business Description ' label="Business Description " variant='outlined' multiline rows={4} fullWidth onChange={(e) => setInput(e)}/>
+            <TextField id='Corporate Philosophy' label="Corporate Philosophy" variant='outlined' multiline rows={4} fullWidth onChange={(e) => setInput(e)}/>
 
           </Stack>
           <Stack spacing={3} direction="column">
             <Stack direction="row" spacing={3}>
 
-              <TextField required id='company_name' label="company name" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+              <TextField required id='company name' label="company name" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
               <TextField id='Industry' label="Industry" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
-              <TextField required id='Mail_ID ' label="Mail ID" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+              <TextField required id='Mail ID ' label="Mail ID" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
             </Stack>
 
             <Stack direction="row" spacing={3}>
 
-              <TextField required id='Phone_Number' label="Phone Number" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+              <TextField required id='Phone Number' label="Phone Number" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
               <TextField required id='Location' label="Location" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
               <TextField id='Website' label="website" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
             </Stack>
 
             <Stack direction="row" spacing={3}>
 
-              <TextField required id='Working_Hours' label="Working Hours" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
-              <TextField required id='Establishment_Date' label="Establishment Date" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+              <TextField required id='Working Hours' label="Working Hours" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+              <TextField required id='Establishment Date' label="Establishment Date" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
               <TextField required id='Initial Capital' label="Initial Capital" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
             </Stack>
 
@@ -59,31 +65,31 @@ function Register() {
               <TextField required id='Representative ' label='Representative ' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
 
               <TextField required id='Branch' label="Branch" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
-              <TextField type="number" required id='Number_Of_Employees' label='Number Of Employees' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+              <TextField type="number" required id='Number Of Employees' label='Number Of Employees' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
             </Stack>
 
             <Stack direction="row" spacing={3}>
-              <TextField type="number" required id='Sales_Revenue' label='Sales Revenue' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+              <TextField type="number" required id='Sales Revenue' label='Sales Revenue' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
 
-              <TextField required id='Operation_Profit' label='Operation Profit' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
-              <TextField required id='Avrage_Age_Of_Employees' label='Avrage Age Of Employees' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+              <TextField required id='Operation Profit' label='Operation Profit' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+              <TextField required id='Avrage Age Of Employees' label='Avrage Age Of Employees' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
             </Stack>
 
             <Stack direction="row" spacing={3}>
               <TextField type="number" id='Stock' label="Stock" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
-              <TextField id='LinkedIn_Link' label='LinkedIn_Link' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
-              <TextField id='Twitter_Link' label='Twitter_Link' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+              <TextField id='LinkedIn_Link' label='LinkedIn Link' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+              <TextField id='Twitter_Link' label='Twitter Link' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
             </Stack>
 
             <Stack direction="row" spacing={3}>
-              <TextField id='Facebook_Link' label='Facebook_Link' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
-              <TextField id='Instagram_Link' label='Instagram_Link' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
-              <TextField id='Youtube_Link' label='Youtube_Link' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+              <TextField id='Facebook_Link' label='Facebook Link' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+              <TextField id='Instagram_Link' label='Instagram Link' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+              <TextField id='Youtube_Link' label='Youtube Link' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
             </Stack>
 
-            <FormLabel id="demo-radio-buttons-group-label">Foriegn Owned</FormLabel>
-            <RadioGroup row aria-required >
-              <FormControlLabel value="Yes" label="Yes" control={<Radio />} />
+            <FormLabel  >Foriegn Owned</FormLabel>
+            <RadioGroup id='Foriegn Owned' row aria-required onChange={(e) => setInput(e,"Foreign Owner")}>
+              <FormControlLabel  value="Yes" label="Yes" control={<Radio />} />
               <FormControlLabel value="No" label="No" control={<Radio />} />
 
             </RadioGroup>

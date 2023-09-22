@@ -1,4 +1,4 @@
-import { Box, ListItem, Stack, Typography } from '@mui/material'
+import { Box, Divider, ListItem, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
@@ -33,12 +33,14 @@ function Body() {
     }, [open])
     const data = Object.keys(allowanceData).map((key) => {
         return <Stack direction="row">
-            <ListItem sx={{ bgcolor: "#D3D3D3" }}>{key} </ListItem><ListItem sx={{ color: allowanceData[key] === "Yes" ? "green" : "red" }}>{allowanceData[key]}</ListItem>
+            <ListItem sx={{ bgcolor: "#D3D3D3" }}><b>{key} </b></ListItem><ListItem sx={{ color: allowanceData[key] === "Yes" ? "green" : "red" }}>{allowanceData[key]}</ListItem>
+            <Divider />
+
         </Stack>
     });
-    const regData =  Object.keys(registerData).map((key) => {
+    const regData = Object.keys(registerData).map((key) => {
         return <Stack direction="row">
-            <ListItem sx={{ bgcolor: "#D3D3D3" }}>{key} </ListItem><ListItem sx={{ color: registerData[key] === "Yes" ? "green" : "red" }}>{registerData[key]}</ListItem>
+            <ListItem sx={{ bgcolor: "#D3D3D3" }}><b>{key}</b> </ListItem><ListItem sx={{ color: registerData[key] === "Yes" ? "green" : "red" }}>{registerData[key]}</ListItem>
         </Stack>
     });
 
@@ -66,11 +68,9 @@ function Body() {
                     </Stack>
                     <Stack>
                         {regData}
-                        {/* {data===null?(""):(data)} */}
                     </Stack>
                 </Stack>
 
-                {/* <Box sx={{ width: '100%', marginTop: "2em" }}> */}
 
 
                 <Stack direction="row" spacing={3} marginTop="2em">
@@ -99,7 +99,7 @@ function Body() {
                     </Stack>
 
 
-                    <Stack width="50%">
+                    <Stack width="50%" spacing={3}>
 
                         <Stack >
                             <Stack direction="row" sx={{ bgcolor: "lightblue" }}>
@@ -137,12 +137,21 @@ function Body() {
 
 
                         <Stack >
-                            <ListItem sx={{ bgcolor: "lightblue" }}>
+                            <Stack direction="row" sx={{ bgcolor: "lightblue" }}>
 
-                                <HorizontalRuleIcon sx={{ color: "blue", transform: "RotateZ(90deg)" }} />
-                                <Typography variant='body2'>Holidays</Typography>
-                                <DriveFileRenameOutlineIcon sx={{ color: "purple", cursor: "pointer" }} />
-                            </ListItem>
+                                <ListItem >
+
+                                    <HorizontalRuleIcon sx={{ color: "blue", transform: "RotateZ(90deg)" }} />
+                                    <Typography variant='body2'>Holidays</Typography>
+                                    
+                                </ListItem>
+                                <Stack justifyContent="flex-end">
+                                        <ListItem>
+                                    <DriveFileRenameOutlineIcon sx={{ color: "purple", cursor: "pointer" }} />
+
+                                    </ListItem>
+                                </Stack>
+                            </Stack>
                             <Stack direction="row">
 
                                 <Stack direction="column" sx={{ backgroundColor: "#D3D3D3" }}>
