@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dialog, DialogContent, DialogTitle, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, Typography } from '@mui/material'
+import {  FormControlLabel, Grid, Radio, RadioGroup, Typography } from '@mui/material'
 
 function DialogMcq({ content,setVal }) {
    
