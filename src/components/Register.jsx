@@ -1,21 +1,22 @@
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
 import { Box, Button, FormControlLabel, FormLabel, Radio, RadioGroup, Stack, TextField } from '@mui/material'
 import Sidenav from './Sidenav'
 // import { Label } from '@mui/icons-material'
 
 function Register() {
 
-  const [formValues, setFormValues] = useState({})
+  // const [formValues, setFormValues] = useState({})
+  const formRef =useRef({})
   function setInput(e, index) {
-    console.log(e.target.value, e.target)
-    setFormValues((prev) => ({
-      ...prev, [e.target.id]: e.target.value
-    }))
+    formRef.current[e.target.id]=e.target.value;
+    console.log(formRef.current)
+   
   }
   function saveDataToLocal() {
-    const formDataString = JSON.stringify(formValues);
+    const formDataString = JSON.stringify(formRef.current);
 
     localStorage.setItem('formData', formDataString);
+    
   }
   return (
     <div style={{ display: "flex" }}>

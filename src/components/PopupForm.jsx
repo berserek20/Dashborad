@@ -7,7 +7,7 @@ function PopupForm({ open, handleClose }) {
     function setVal(value, id) {
         // dref.current(current[id]:value)
         dref.current[id] = value;
-        console.log(dref.current)
+        console.log(dref.current,value)
 
     }
     // function addTORef(el){
@@ -19,6 +19,7 @@ function PopupForm({ open, handleClose }) {
         const formDataString = JSON.stringify(dref.current);
 
         localStorage.setItem('Allowance', formDataString)
+        handleClose();
     }
     return (
         <div>
@@ -94,7 +95,7 @@ function PopupForm({ open, handleClose }) {
                                 <Typography>Mentor System</Typography>
                             </Grid>
                             <Grid xs={12}>
-                                <RadioGroup row onChange={(e) => setVal(e)}>
+                                <RadioGroup id='Mentor System' row onChange={(e) => setVal(e.target.value,"Mentor System")}>
                                     <FormControlLabel value="Yes" label="Yes" control={<Radio />} />
                                     <FormControlLabel value="No" label="No" control={<Radio />} />
 
@@ -113,7 +114,7 @@ function PopupForm({ open, handleClose }) {
                                 <Typography>Career Consulting</Typography>
                             </Grid>
                             <Grid xs={12}>
-                                <RadioGroup row onChange={(e) => setVal(e)}>
+                                <RadioGroup id='Career Consulting' row onChange={(e) => setVal(e.target.value,"Career Consulting")}>
                                     <FormControlLabel value="Yes" label="Yes" control={<Radio />} />
                                     <FormControlLabel value="No" label="No" control={<Radio />} />
 
@@ -121,8 +122,8 @@ function PopupForm({ open, handleClose }) {
                             </Grid>
 
                         </Grid>
-                    </FormControl>
                     <Button variant="contained" sx={{ bgcolor: "#000080", margin: "auto" }} onClick={saveToLocal}>Save</Button>
+                    </FormControl>
                 </DialogContent>
             </Dialog>
         </div>

@@ -4,9 +4,12 @@ import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import PopupForm from './PopupForm';
 import { Link } from 'react-router-dom';
+// import { grey } from '@mui/material/colors';
 
 function Body() {
-    const [allowanceData, setAllowanceData] = useState([]);
+    const [allowanceData, setAllowanceData] = useState({});
+    const [registerData, setRegisterData] = useState({});
+
     const [open, setOpen] = useState(false);
     function handleClickOpen() {
         setOpen(true)
@@ -16,39 +19,54 @@ function Body() {
     };
     useEffect(() => {
         const v = localStorage.getItem("Allowance")
-        const temp = JSON.parse(v);
+        const temp1 = JSON.parse(v);
+        const r = localStorage.getItem("formData")
+        const temp2 = JSON.parse(r);
+        if (temp1 != null) {
 
-        if(temp != null){
-
-            setAllowanceData(temp);
+            setAllowanceData(temp1);
         }
-        
-        console.log(allowanceData)
-    }, [])
+        if (temp2 != null) {
+            setRegisterData(temp2)
+        }
+        console.log(registerData)
+    }, [open])
     const data = Object.keys(allowanceData).map((key) => {
         return <Stack direction="row">
-            <ListItem sx={{bgcolor:"#D3D3D3"}}>{key} </ListItem><ListItem>{allowanceData[key]}</ListItem>
+            <ListItem sx={{ bgcolor: "#D3D3D3" }}>{key} </ListItem><ListItem sx={{ color: allowanceData[key] === "Yes" ? "green" : "red" }}>{allowanceData[key]}</ListItem>
         </Stack>
     });
-    
+    const regData =  Object.keys(registerData).map((key) => {
+        return <Stack direction="row">
+            <ListItem sx={{ bgcolor: "#D3D3D3" }}>{key} </ListItem><ListItem sx={{ color: registerData[key] === "Yes" ? "green" : "red" }}>{registerData[key]}</ListItem>
+        </Stack>
+    });
+
     return (
         <>
             <Box sx={{ width: '100%', margin: "2em" }}>
 
                 {/* <Stack spacing={2}> */}
                 {/* direction="row" */}
-                <Stack direction="row" spacing={5} sx={{ bgcolor: "lightblue" }}>
-                    <ListItem >
-                        <HorizontalRuleIcon sx={{ color: "blue", transform: "RotateZ(90deg)" }} />
-                        <Typography variant='body2' sx={{ color: "purple" }}>Corporate Information</Typography>
-                    </ListItem>
+                <Stack direction="column">
 
-                    <Stack justifyContent="flex-end">
+                    <Stack direction="row" spacing={5} sx={{ bgcolor: "lightblue" }}>
                         <ListItem >
-                            <Link to='/register' variant='body2'>
-                                <DriveFileRenameOutlineIcon sx={{ color: "purple" }} />
-                            </Link>
-                        </ ListItem >
+                            <HorizontalRuleIcon sx={{ color: "blue", transform: "RotateZ(90deg)" }} />
+                            <Typography variant='body2' sx={{ color: "purple" }}>Corporate Information</Typography>
+                        </ListItem>
+
+                        <Stack justifyContent="flex-end">
+                            <ListItem >
+                                <Link to='/register' variant='body2'>
+                                    <DriveFileRenameOutlineIcon sx={{ color: "purple" }} />
+                                </Link>
+                            </ ListItem >
+                        </Stack>
+                    </Stack>
+                    <Stack>
+                        {regData}
+                        {/* {data===null?(""):(data)} */}
                     </Stack>
                 </Stack>
 
@@ -56,18 +74,26 @@ function Body() {
 
 
                 <Stack direction="row" spacing={3} marginTop="2em">
-                    <Stack direction="column">
+                    <Stack direction="column" width="70%">
 
-                        <Stack width="100%">
+                        {/* <Stack > */}
+                        <Stack direction="row" sx={{ bgcolor: "lightblue" }}>
+
                             <ListItem sx={{ bgcolor: "lightblue" }}>
 
                                 <HorizontalRuleIcon sx={{ color: "blue", transform: "RotateZ(90deg)" }} />
                                 <Typography variant='body1' sx={{ color: "purple" }}>Allowances</Typography>
-                                <DriveFileRenameOutlineIcon sx={{ color: "purple", cursor: "pointer" }} onClick={handleClickOpen} />
-                                <PopupForm open={open} handleClose={handleClose} />
                             </ListItem>
+                            <Stack direction="flex-end">
 
+                                <ListItem>
+
+                                    <DriveFileRenameOutlineIcon sx={{ color: "purple", cursor: "pointer" }} onClick={handleClickOpen} />
+                                    <PopupForm open={open} handleClose={handleClose} />
+                                </ListItem>
+                            </Stack>
                         </Stack>
+                        {/* </Stack> */}
                         {data}
                         {/* {data===null?(""):(data)} */}
                     </Stack>
@@ -76,26 +102,36 @@ function Body() {
                     <Stack width="50%">
 
                         <Stack >
-                            <ListItem sx={{ bgcolor: "lightblue" }}>
-                                <HorizontalRuleIcon sx={{ color: "blue", transform: "RotateZ(90deg)" }} />
-                                <Typography variant='body2' sx={{ color: "purple" }}>Others</Typography>
-                                <DriveFileRenameOutlineIcon sx={{ color: "purple", cursor: "pointer" }} />
-                            </ListItem>
+                            <Stack direction="row" sx={{ bgcolor: "lightblue" }}>
 
-                            <ListItem>
-                                <Typography variant='body1' >Retention Rate Of New Graduate Hires</Typography>
-                                <Typography variant='body1' >Over 50%</Typography>
-                            </ListItem>
+                                <ListItem >
+                                    <HorizontalRuleIcon sx={{ color: "blue", transform: "RotateZ(90deg)" }} />
+                                    <Typography variant='body2' sx={{ color: "purple" }}>Others</Typography>
+                                </ListItem>
+                                <Stack justifyContent="flex-end">
+                                    <ListItem>
 
-                            <ListItem>
-                                <Typography variant='body1' >Retention Rate Of New Graduate Hires</Typography>
-                                <Typography variant='body1' >Over 50%</Typography>
-                            </ListItem>
+                                        <DriveFileRenameOutlineIcon sx={{ color: "purple", cursor: "pointer" }} />
+                                    </ListItem>
 
-                            <ListItem>
-                                <Typography variant='body1' >Retention Rate Of New Graduate Hires</Typography>
-                                <Typography variant='body1' >Over 50%</Typography>
-                            </ListItem>
+                                </Stack>
+                            </Stack>
+                            <Stack direction="row">
+
+                                <Stack direction="column" sx={{ backgroundColor: "#D3D3D3" }}>
+                                    <Typography variant='body1' ><b>Retention Rate Of New Graduate Hires</b></Typography>
+                                    <Typography variant='body1' ><b>Work Style ( Overseas Bases )</b></Typography>
+                                    <Typography variant='body1' ><b>Working Environments</b></Typography>
+                                </Stack>
+
+                                <Stack direction="column" >
+                                    <Typography variant='body1' >Over 50%</Typography>
+                                    <Typography variant='body1' color="green">Yes </Typography>
+                                    <Typography variant='body1' >Not Working</Typography>
+                                </Stack>
+                            </Stack>
+
+
 
                         </Stack>
 
@@ -107,21 +143,22 @@ function Body() {
                                 <Typography variant='body2'>Holidays</Typography>
                                 <DriveFileRenameOutlineIcon sx={{ color: "purple", cursor: "pointer" }} />
                             </ListItem>
+                            <Stack direction="row">
 
-                            <ListItem>
-                                <Typography variant='body1' >Retention Rate Of New Graduate Hires</Typography>
-                                <Typography variant='body1' >Over 50%</Typography>
-                            </ListItem>
+                                <Stack direction="column" sx={{ backgroundColor: "#D3D3D3" }}>
+                                    <Typography variant='body1' ><b>Summer Holidays</b></Typography>
+                                    <Typography variant='body1' ><b>Golden Weeks</b></Typography>
+                                    <Typography variant='body1' ><b>Other Holidays</b></Typography>
+                                </Stack>
 
-                            <ListItem>
-                                <Typography variant='body1' >Retention Rate Of New Graduate Hires</Typography>
-                                <Typography variant='body1' >Over 50%</Typography>
-                            </ListItem>
+                                <Stack direction="column" >
+                                    <Typography variant='body1' color="green">Yes</Typography>
+                                    <Typography variant='body1' color="green">Yes</Typography>
+                                    <Typography variant='body1' color="green">Yes</Typography>
+                                </Stack>
+                            </Stack>
 
-                            <ListItem>
-                                <Typography variant='body1' >Retention Rate Of New Graduate Hires</Typography>
-                                <Typography variant='body1' >Over 50%</Typography>
-                            </ListItem>
+
                         </Stack>
 
                     </Stack>
