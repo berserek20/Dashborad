@@ -1,5 +1,4 @@
-import { Dashboard } from '@mui/icons-material'
-import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
+import { Box, List, ListItem, ListItemButton, ListItemText } from '@mui/material'
 import React from 'react'
 import { ReactComponent as Window } from '../assets/briefcase.svg'
 import { ReactComponent as Case } from '../assets/case.svg'

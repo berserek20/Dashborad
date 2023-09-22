@@ -4,7 +4,6 @@ import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import PopupForm from './PopupForm';
 import { Link } from 'react-router-dom';
-// import { grey } from '@mui/material/colors';
 
 function Body() {
     const [allowanceData, setAllowanceData] = useState({});
@@ -29,7 +28,6 @@ function Body() {
         if (temp2 != null) {
             setRegisterData(temp2)
         }
-        // console.log(registerData)
     }, [open])
     const data = Object.keys(allowanceData).map((key) => {
         return <Stack direction="row">
@@ -48,8 +46,7 @@ function Body() {
         <>
             <Box sx={{ width: '100%', margin: "2em" }}>
 
-                {/* <Stack spacing={2}> */}
-                {/* direction="row" */}
+               
                 <Stack direction="column">
 
                     <Stack direction="row" spacing={5} sx={{ bgcolor: "lightblue" }}>
@@ -76,7 +73,6 @@ function Body() {
                 <Stack direction="row" spacing={3} marginTop="2em">
                     <Stack direction="column" width="70%">
 
-                        {/* <Stack > */}
                         <Stack direction="row" sx={{ bgcolor: "lightblue" }}>
 
                             <ListItem sx={{ bgcolor: "lightblue" }}>
@@ -173,7 +169,6 @@ function Body() {
                     </Stack>
 
                 </Stack>
-                {/* </Box> */}
 
             </Box >
         </>

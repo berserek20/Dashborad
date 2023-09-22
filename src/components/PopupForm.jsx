@@ -7,13 +7,10 @@ function PopupForm({ open, handleClose }) {
     function setVal(value, id) {
         // dref.current(current[id]:value)
         dref.current[id] = value;
-        console.log(dref.current,value)
+        // console.log(dref.current,value)
 
     }
-    // function addTORef(el){
-    //     console.log(el)
-    //     dref.current.push(el)
-    // }
+   
     
     function saveToLocal() {
         const formDataString = JSON.stringify(dref.current);
@@ -102,8 +99,7 @@ function PopupForm({ open, handleClose }) {
                                 </RadioGroup>
                             </Grid>
 
-                            {/* Grid 13 */}
-                            {/* <DialogMcq content="120 Or More Annual Holidays"/> */}
+                          
 
                             <Grid xs={2}>
 

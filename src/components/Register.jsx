@@ -1,7 +1,6 @@
 import React, { useRef } from 'react'
 import { Box, Button, FormControlLabel, FormLabel, Radio, RadioGroup, Stack, TextField } from '@mui/material'
 import Sidenav from './Sidenav'
-// import { Label } from '@mui/icons-material'
 
 function Register() {
 
