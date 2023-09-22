@@ -29,7 +29,7 @@ function Body() {
         if (temp2 != null) {
             setRegisterData(temp2)
         }
-        console.log(registerData)
+        // console.log(registerData)
     }, [open])
     const data = Object.keys(allowanceData).map((key) => {
         return <Stack direction="row">
