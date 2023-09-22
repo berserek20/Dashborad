@@ -1,11 +1,12 @@
-import { Box, Link, ListItem, Stack, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import { Box, ListItem, Stack, Typography } from '@mui/material'
+import React, { useEffect, useState } from 'react'
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import PopupForm from './PopupForm';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Body() {
+    const [allowanceData, setAllowanceData] = useState([]);
     const [open, setOpen] = useState(false);
     function handleClickOpen() {
         setOpen(true)
@@ -13,6 +14,23 @@ function Body() {
     const handleClose = () => {
         setOpen(false);
     };
+    useEffect(() => {
+        const v = localStorage.getItem("Allowance")
+        const temp = JSON.parse(v);
+
+        if(temp != null){
+
+            setAllowanceData(temp);
+        }
+        
+        console.log(allowanceData)
+    }, [])
+    const data = Object.keys(allowanceData).map((key) => {
+        return <Stack direction="row">
+            <ListItem sx={{bgcolor:"#D3D3D3"}}>{key} </ListItem><ListItem>{allowanceData[key]}</ListItem>
+        </Stack>
+    });
+    
     return (
         <>
             <Box sx={{ width: '100%', margin: "2em" }}>
@@ -27,36 +45,41 @@ function Body() {
 
                     <Stack justifyContent="flex-end">
                         <ListItem >
-                            <Link href='/register' variant='body2'>
+                            <Link to='/register' variant='body2'>
                                 <DriveFileRenameOutlineIcon sx={{ color: "purple" }} />
                             </Link>
                         </ ListItem >
                     </Stack>
-
                 </Stack>
+
                 {/* <Box sx={{ width: '100%', marginTop: "2em" }}> */}
 
 
                 <Stack direction="row" spacing={3} marginTop="2em">
+                    <Stack direction="column">
 
-                    <Stack width="50%">
-                        <ListItem sx={{ bgcolor: "lightblue" }}>
+                        <Stack width="100%">
+                            <ListItem sx={{ bgcolor: "lightblue" }}>
 
-                            <HorizontalRuleIcon sx={{ color: "blue", transform: "RotateZ(90deg)" }} />
-                            <Typography variant='body1' sx={{ color: "purple" }}>Allowances</Typography>
-                            <DriveFileRenameOutlineIcon sx={{ color: "purple" , cursor:"pointer"}} onClick={handleClickOpen} />
-                            <PopupForm open={open} handleClose={handleClose} />
-                        </ListItem>
+                                <HorizontalRuleIcon sx={{ color: "blue", transform: "RotateZ(90deg)" }} />
+                                <Typography variant='body1' sx={{ color: "purple" }}>Allowances</Typography>
+                                <DriveFileRenameOutlineIcon sx={{ color: "purple", cursor: "pointer" }} onClick={handleClickOpen} />
+                                <PopupForm open={open} handleClose={handleClose} />
+                            </ListItem>
 
+                        </Stack>
+                        {data}
+                        {/* {data===null?(""):(data)} */}
                     </Stack>
+
 
                     <Stack width="50%">
 
                         <Stack >
                             <ListItem sx={{ bgcolor: "lightblue" }}>
                                 <HorizontalRuleIcon sx={{ color: "blue", transform: "RotateZ(90deg)" }} />
-                                <Typography variant='h6'>Others</Typography>
-                                <DriveFileRenameOutlineIcon sx={{ color: "purple", cursor:"pointer"}} />
+                                <Typography variant='body2' sx={{ color: "purple" }}>Others</Typography>
+                                <DriveFileRenameOutlineIcon sx={{ color: "purple", cursor: "pointer" }} />
                             </ListItem>
 
                             <ListItem>
@@ -78,11 +101,11 @@ function Body() {
 
 
                         <Stack >
-                        <ListItem sx={{ bgcolor: "lightblue" }}>
+                            <ListItem sx={{ bgcolor: "lightblue" }}>
 
-                            <HorizontalRuleIcon sx={{ color: "blue", transform: "RotateZ(90deg)" }} />
-                            <Typography variant='h6'>Holidays</Typography>
-                            <DriveFileRenameOutlineIcon sx={{ color: "purple" , cursor:"pointer"}} />
+                                <HorizontalRuleIcon sx={{ color: "blue", transform: "RotateZ(90deg)" }} />
+                                <Typography variant='body2'>Holidays</Typography>
+                                <DriveFileRenameOutlineIcon sx={{ color: "purple", cursor: "pointer" }} />
                             </ListItem>
 
                             <ListItem>

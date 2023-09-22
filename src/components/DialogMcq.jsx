@@ -1,7 +1,7 @@
 import React from 'react'
 import {  FormControlLabel, Grid, Radio, RadioGroup, Typography } from '@mui/material'
 
-function DialogMcq({ content,setVal }) {
+function DialogMcq({ content,setVal,id }) {
    
     return (
         <>
@@ -13,8 +13,8 @@ function DialogMcq({ content,setVal }) {
 
                 <Typography>{content}</Typography>
             </Grid>
-            <Grid xs={12} onChange={(e)=>setVal(e)}>
-                <RadioGroup  row aria-required >
+            <Grid xs={12} onChange={(e)=>setVal(e.target.value,id)}>
+                <RadioGroup itemRef={content}  row required >
                     <FormControlLabel  value="Yes" label="Yes" control={<Radio />} />
                     <FormControlLabel value="No" label="No" control={<Radio />} />
 

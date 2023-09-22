@@ -1,26 +1,28 @@
 import { Button, Dialog, DialogContent, DialogTitle, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, Typography } from '@mui/material'
-import React, { useEffect, useRef } from 'react'
+import React, {  useRef } from 'react'
 import DialogMcq from './DialogMcq';
 
 function PopupForm({ open, handleClose }) {
-    const dref = useRef([]);
-    dref.current =[];
-    function setVal(e) {
-        console.log(e.target.value,e);
+    const dref = useRef({});
+    function setVal(value, id) {
+        // dref.current(current[id]:value)
+        dref.current[id] = value;
         console.log(dref.current)
 
     }
-    function addTORef(el){
-        console.log(el)
-        dref.current.push(el)
-    }
-    useEffect(()=>{
-        console.log(dref)
+    // function addTORef(el){
+    //     console.log(el)
+    //     dref.current.push(el)
+    // }
+    
+    function saveToLocal() {
+        const formDataString = JSON.stringify(dref.current);
 
-    },[])
+        localStorage.setItem('Allowance', formDataString)
+    }
     return (
         <div>
-            <Dialog open={open} onClose={handleClose} >
+            <Dialog open={open} onClose={handleClose} fullWidth>
                 <DialogTitle>Allowances</DialogTitle>
                 <DialogContent>
                     <FormLabel></FormLabel>
@@ -28,54 +30,54 @@ function PopupForm({ open, handleClose }) {
                         <Grid container spacing={1} columns={30} >
 
                             {/* Grid 1 */}
-                            <DialogMcq ref={addTORef} id="Salary System Based On Meritocracy" content="Salary System Based On Meritocracy" setVal={setVal}/>
+                            <DialogMcq id="Salary System Based On Meritocracy" content="Salary System Based On Meritocracy" setVal={setVal} />
 
 
 
                             {/* Grid 2 */}
-                            <DialogMcq ref={dref[1]} content="120 Or More Annual Holidays" setVal={setVal}/>
+                            <DialogMcq id="120 Or More Annual Holidays" content="120 Or More Annual Holidays" setVal={setVal} />
 
                             {/* Grid 3 */}
-                            <DialogMcq ref={dref[2]} content="Generous Welfare Benifits"  setVal={setVal}/>
+                            <DialogMcq id="Generous Welfare Benifits" content="Generous Welfare Benifits" setVal={setVal} />
 
 
                             {/* Grid 4 */}
-                            <DialogMcq content="Enhanced Education And Training" setVal={setVal}/>
+                            <DialogMcq id="Enhanced Education And Training" content="Enhanced Education And Training" setVal={setVal} />
 
 
 
                             {/* Grid 5 */}
-                            <DialogMcq content="Support System For Acquriring Qualification" setVal={setVal}/>
+                            <DialogMcq id="Support System For Acquriring Qualification" content="Support System For Acquriring Qualification" setVal={setVal} />
 
 
 
                             {/* Grid 6 */}
-                            <DialogMcq content="Reduced Working Hours System" setVal={setVal}/>
+                            <DialogMcq id="Reduced Working Hours System" content="Reduced Working Hours System" setVal={setVal} />
 
 
 
                             {/* Grid 7 */}
-                            <DialogMcq content="Maternity Care Leave System" setVal={setVal}/>
+                            <DialogMcq id="Maternity Care Leave System" content="Maternity Care Leave System" setVal={setVal} />
 
 
 
                             {/* Grid 8 */}
-                            <DialogMcq content="Company Housing / Rent Subsidy" setVal={setVal}/>
+                            <DialogMcq id="Company Housing / Rent Subsidy" content="Company Housing / Rent Subsidy" setVal={setVal} />
 
 
 
                             {/* Grid 9 */}
-                            <DialogMcq content="Family Allowance" setVal={setVal}/>
+                            <DialogMcq id="Family Allowance" content="Family Allowance" setVal={setVal} />
 
 
 
                             {/* Grid 10 */}
-                            <DialogMcq content="Employee Stock Ownership" setVal={setVal}/>
+                            <DialogMcq id="Employee Stock Ownership" content="Employee Stock Ownership" setVal={setVal} />
 
 
 
                             {/* Grid 11 */}
-                            <DialogMcq content="Side Job Available" setVal={setVal}/>
+                            <DialogMcq id="Side Job Available" content="Side Job Available" setVal={setVal} />
 
 
 
@@ -92,7 +94,7 @@ function PopupForm({ open, handleClose }) {
                                 <Typography>Mentor System</Typography>
                             </Grid>
                             <Grid xs={12}>
-                                <RadioGroup row onChange={(e)=>setVal(e)}>
+                                <RadioGroup row onChange={(e) => setVal(e)}>
                                     <FormControlLabel value="Yes" label="Yes" control={<Radio />} />
                                     <FormControlLabel value="No" label="No" control={<Radio />} />
 
@@ -111,7 +113,7 @@ function PopupForm({ open, handleClose }) {
                                 <Typography>Career Consulting</Typography>
                             </Grid>
                             <Grid xs={12}>
-                                <RadioGroup row onChange={(e)=>setVal(e)}>
+                                <RadioGroup row onChange={(e) => setVal(e)}>
                                     <FormControlLabel value="Yes" label="Yes" control={<Radio />} />
                                     <FormControlLabel value="No" label="No" control={<Radio />} />
 
@@ -120,7 +122,7 @@ function PopupForm({ open, handleClose }) {
 
                         </Grid>
                     </FormControl>
-                    <Button variant="contained" sx={{bgcolor:"#000080",margin:"auto"}}>Save</Button>
+                    <Button variant="contained" sx={{ bgcolor: "#000080", margin: "auto" }} onClick={saveToLocal}>Save</Button>
                 </DialogContent>
             </Dialog>
         </div>
