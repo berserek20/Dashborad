@@ -4,6 +4,7 @@ import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import PopupForm from './PopupForm';
 import { Link } from 'react-router-dom';
+import TableRow from './TableRow'
 
 function Body() {
     const [allowanceData, setAllowanceData] = useState({});
@@ -30,16 +31,12 @@ function Body() {
         }
     }, [open])
     const data = Object.keys(allowanceData).map((key) => {
-        return <Stack direction="row">
-            <ListItem sx={{ bgcolor: "#D3D3D3" }}><b>{key} </b></ListItem><ListItem sx={{ color: allowanceData[key] === "Yes" ? "green" : "red" }}>{allowanceData[key]}</ListItem>
-            <Divider />
-
-        </Stack>
+        return <TableRow label={key} value={allowanceData[key]} styleValue={{ color: allowanceData[key] === "Yes" ? "green" : "red" }}/>
     });
+
+
     const regData = Object.keys(registerData).map((key) => {
-        return <Stack direction="row">
-            <ListItem sx={{ bgcolor: "#D3D3D3" }}><b>{key}</b> </ListItem><ListItem sx={{ color: registerData[key] === "Yes" ? "green" : "red" }}>{registerData[key]}</ListItem>
-        </Stack>
+        return <TableRow label={key} value={registerData[key]} styleValue={{ color: registerData[key] === "Yes" ? "green" : "red" }}/>
     });
 
     return (
@@ -112,19 +109,10 @@ function Body() {
 
                                 </Stack>
                             </Stack>
-                            <Stack direction="row">
-
-                                <Stack direction="column" sx={{ backgroundColor: "#D3D3D3" }}>
-                                    <Typography variant='body1' ><b>Retention Rate Of New Graduate Hires</b></Typography>
-                                    <Typography variant='body1' ><b>Work Style ( Overseas Bases )</b></Typography>
-                                    <Typography variant='body1' ><b>Working Environments</b></Typography>
-                                </Stack>
-
-                                <Stack direction="column" >
-                                    <Typography variant='body1' >Over 50%</Typography>
-                                    <Typography variant='body1' color="green">Yes </Typography>
-                                    <Typography variant='body1' >Not Working</Typography>
-                                </Stack>
+                            <Stack direction="column">
+                                <TableRow label={"Retention Rate Of New Graduate Hires"} value={"Over 50%"} />
+                                <TableRow label={"Work Style ( Overseas Bases )"} value={"Yes"} />
+                                <TableRow label={"Working Environments"} value={"Not Working"} />
                             </Stack>
 
 
@@ -148,19 +136,8 @@ function Body() {
                                     </ListItem>
                                 </Stack>
                             </Stack>
-                            <Stack direction="row">
-
-                                <Stack direction="column" sx={{ backgroundColor: "#D3D3D3" }}>
-                                    <Typography variant='body1' ><b>Summer Holidays</b></Typography>
-                                    <Typography variant='body1' ><b>Golden Weeks</b></Typography>
-                                    <Typography variant='body1' ><b>Other Holidays</b></Typography>
-                                </Stack>
-
-                                <Stack direction="column" >
-                                    <Typography variant='body1' color="green">Yes</Typography>
-                                    <Typography variant='body1' color="green">Yes</Typography>
-                                    <Typography variant='body1' color="green">Yes</Typography>
-                                </Stack>
+                            <Stack direction="column">
+                                <TableRow label={"Simple"} value={"Yes"} />
                             </Stack>
 
 

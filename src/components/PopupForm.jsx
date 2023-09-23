@@ -7,7 +7,7 @@ function PopupForm({ open, handleClose }) {
     function setVal(value, id) {
         // dref.current(current[id]:value)
         dref.current[id] = value;
-        // console.log(dref.current,value)
+       
 
     }
    
