@@ -36,7 +36,7 @@ function Body() {
 
 
     const regData = Object.keys(registerData).map((key) => {
-        return <TableRow label={key} value={registerData[key]} styleValue={{ color: registerData[key] === "Yes" ? "green" : "red" }}/>
+        return <TableRow label={key} value={registerData[key]} styleValue={{ color: registerData[key] === "Yes" ? "green" : "black" }}/>
     });
 
     return (
@@ -110,9 +110,9 @@ function Body() {
                                 </Stack>
                             </Stack>
                             <Stack direction="column">
-                                <TableRow label={"Retention Rate Of New Graduate Hires"} value={"Over 50%"} />
+                                <TableRow label={"Retention Rate Of New Graduate Hires"} value={"Over 50%"} styleValue={{color:"black"}}/>
                                 <TableRow label={"Work Style ( Overseas Bases )"} value={"Yes"} />
-                                <TableRow label={"Working Environments"} value={"Not Working"} />
+                                <TableRow label={"Working Environments"} value={"Not Working"} styleValue={{color:"black"}}/>
                             </Stack>
 
 
@@ -137,7 +137,9 @@ function Body() {
                                 </Stack>
                             </Stack>
                             <Stack direction="column">
-                                <TableRow label={"Simple"} value={"Yes"} />
+                                <TableRow label={"Summer Holidays"} value={"Yes"} />
+                                <TableRow label={"Golden Week"} value={"Yes"} />
+                                <TableRow label={"Other Holidays"} value={"Yes"} />
                             </Stack>
 
 
