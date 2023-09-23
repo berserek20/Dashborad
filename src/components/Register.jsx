@@ -65,7 +65,7 @@ function Register() {
 
               <div flex1>
                 <label>Industry </label>
-                <TextField id='Industry' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+                <TextField id='Industry' variant='outlined'  helperText={errorFunc("Industry")} onChange={(e) => setInput(e)} fullWidth />
               </div>
               <div flex1>
                 <label><span style={{ color: "red" }}>*</span>Mail ID</label>
@@ -76,7 +76,7 @@ function Register() {
             <Stack direction="row" spacing={3}>
               <div flex1>
                 <label><span style={{ color: "red" }}>*</span>Phone Number</label>
-                <TextField required id='Phone Number' helperText={errorFunc("Phone Numbe")} variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+                <TextField required id='Phone Number' helperText={errorFunc("Phone Number")} variant='outlined' onChange={(e) => setInput(e)} fullWidth />
               </div>
               <div flex1>
                 <label><span style={{ color: "red" }}>*</span>Location</label>
@@ -84,14 +84,14 @@ function Register() {
               </div>
               <div flex1>
                 <label>website</label>
-                <TextField id='Website' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+                <TextField id='Website' variant='outlined'  helperText={errorFunc("Website")} onChange={(e) => setInput(e)} fullWidth />
               </div>
             </Stack>
 
             <Stack direction="row" spacing={3}>
             <div flex1 >
                 <label><span style={{ color: "red" }}>*</span>Working Hours</label>
-              <TextField required id='Working Hours' label="Working Hours" helperText={errorFunc("Working Hours")} variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+              <TextField required id='Working Hours' helperText={errorFunc("Working Hours")} variant='outlined' onChange={(e) => setInput(e)} fullWidth />
               </div>
               <div flex1 >
                 <label><span style={{ color: "red" }}>*</span>Establishment Date</label>
@@ -99,8 +99,8 @@ function Register() {
 
               </div>
               <div flex1 >
-                <label><span style={{ color: "red" }}>*</span>Establishment Date</label>
-                <TextField required id='Initial Capital' helperText={errorFunc("Initial Capital")} label="Initial Capital" variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+                <label><span style={{ color: "red" }}>*</span>Initial Capital</label>
+                <TextField required id='Initial Capital' helperText={errorFunc("Initial Capital")} variant='outlined' onChange={(e) => setInput(e)} fullWidth />
               </div>
             </Stack>
 
@@ -139,30 +139,30 @@ function Register() {
             <Stack direction="row" spacing={3}>
               <div flex1 >
                 <label><span style={{ color: "red" }}>*</span>Stock</label>
-                <TextField type="number" id='Stock' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+                <TextField type="number" id='Stock' variant='outlined'  helperText={errorFunc("Stock")} onChange={(e) => setInput(e)} fullWidth />
               </div>
               <div flex1 >
                 <label><span style={{ color: "red" }}>*</span>LinkedIn Link</label>
-                <TextField id='LinkedIn_Link' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+                <TextField id='LinkedIn_Link' variant='outlined'  helperText={errorFunc("LinkedIn_Link")} onChange={(e) => setInput(e)} fullWidth />
               </div>
               <div flex1 >
                 <label><span style={{ color: "red" }}>*</span>Twitter Link</label>
-                <TextField id='Twitter_Link' variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+                <TextField id='Twitter_Link' variant='outlined'  helperText={errorFunc("Twitter_Link")} onChange={(e) => setInput(e)} fullWidth />
               </div>
             </Stack>
 
             <Stack direction="row" spacing={3}>
               <div flex1 >
                 <label><span style={{ color: "red" }}>*</span>Facebook Link</label>
-                <TextField id='Facebook_Link'  variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+                <TextField id='Facebook_Link'  variant='outlined'  helperText={errorFunc("Facebook_Link")} onChange={(e) => setInput(e)} fullWidth />
               </div>
               <div flex1 >
                 <label><span style={{ color: "red" }}>*</span>Instagram Link</label>
-                <TextField id='Instagram_Link'  variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+                <TextField id='Instagram_Link'  variant='outlined'  helperText={errorFunc("Instagram_Link")} onChange={(e) => setInput(e)} fullWidth />
              </div>
               <div flex1 >
                 <label><span style={{ color: "red" }}>*</span>Youtube Link</label>
-                <TextField id='Youtube_Link'  variant='outlined' onChange={(e) => setInput(e)} fullWidth />
+                <TextField id='Youtube_Link'  variant='outlined'  helperText={errorFunc("Youtube_Link")} onChange={(e) => setInput(e)} fullWidth />
               </div>
             </Stack>
 
